@@ -1,10 +1,10 @@
 %%TEST TEST TEST
-%% Testing section (comment out when function is working as intended)
+%% mass matrix test - bogus variable generation
 clc ; clear ; close ;
-N = 100;
+N = 1000;
 m = (1:1:N)+10;
 L = 10;
 d = ones(1,N);
-C = 22;
+C = ones(1,9*N)*24;
 
 M = Mass_matrix(N,m,L,d,C);

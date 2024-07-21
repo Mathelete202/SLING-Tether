@@ -1,6 +1,6 @@
 %% Mass Matrix generator V2
-%% THIS VERSION USES SPARSE MATRICES, MUCH MORE OPTIMIZED 
-% NOT USABLE FOR N > 1000
+%% THIS VERSION USES SPARSE MATRICES, MUCH MORE OPTIMIZED THAN V1
+
 % The purpose of this function is to generate the mass matrix for a N-link 
 % MET simulation
 %% Inputs list
@@ -15,8 +15,8 @@
 % this will prevent unecessary data duplication
 
 % Note that the indexing system used in this function is derived from the
-% SLING structures indexing system (see google drive structures > 
-% Tether structure simulation research (sept 23 - ongoing) > READ ME)
+% SLING structures indexing system [see google drive: structures > 
+% Tether structure simulation research (sept 23 - ongoing) > READ ME]
 
 %% Function body
 function [M] = Mass_matrix_sparse(N,m,L,d,C)
