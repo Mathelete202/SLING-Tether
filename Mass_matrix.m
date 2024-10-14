@@ -58,9 +58,9 @@ for i = 4:12:(12*N) %adding left pivot constraint
     M((i+2),(3*N+9*floor(i/12)+3)) = L/2;
 
     if (ceil(i/12) ~= N) %adding right pivot constraint unless @ last link
-        M(i,(3*N+9*(floor(i/12)+1)+1)) = -L/2;
-        M((i+1),(3*N+9*(floor(i/12)+1)+2)) = -L/2;
-        M((i+2),(3*N+9*(floor(i/12)+1)+3)) = -L/2;
+        M(i,(3*N+9*(floor(i/12)+1)+1)) = L/2;
+        M((i+1),(3*N+9*(floor(i/12)+1)+2)) = L/2;
+        M((i+2),(3*N+9*(floor(i/12)+1)+3)) = L/2;
     end
 end
 
