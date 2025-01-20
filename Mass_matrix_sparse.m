@@ -1,6 +1,6 @@
-%% Mass Matrix generator V1
-%% WHILE THIS IS TECHNICALLY FUNCTIONAL, IT CANNOT HANDLE SPARSE MATRICES, 
-% NOT USABLE FOR N > 1000 (memory constraints)
+%% Mass Matrix generator V2
+%% THIS VERSION USES SPARSE MATRICES, MUCH MORE OPTIMIZED THAN V1
+
 % The purpose of this function is to generate the mass matrix for a N-link 
 % MET simulation
 %% Inputs list
@@ -15,11 +15,11 @@
 % this will prevent unecessary data duplication
 
 % Note that the indexing system used in this function is derived from the
-% SLING structures indexing system (see google drive structures > 
-% Tether structure simulation research (sept 23 - ongoing) > READ ME)
+% SLING structures indexing system [see google drive: structures > 
+% Tether structure simulation research (sept 23 - ongoing) > READ ME]
 
 %% Function body
-function [M] = Mass_matrix(N,m,L,d,C)
+function [M] = Mass_matrix_sparse(N,m,L,d,C)
 
 %Mass matrix allocation
 M = zeros(12*N,12*N);
@@ -58,9 +58,9 @@ for i = 4:12:(12*N) %adding left pivot constraint
     M((i+2),(3*N+9*floor(i/12)+3)) = L/2;
 
     if (ceil(i/12) ~= N) %adding right pivot constraint unless @ last link
-        M(i,(3*N+9*(floor(i/12)+1)+1)) = L/2;
-        M((i+1),(3*N+9*(floor(i/12)+1)+2)) = L/2;
-        M((i+2),(3*N+9*(floor(i/12)+1)+3)) = L/2;
+        M(i,(3*N+9*(floor(i/12)+1)+1)) = -L/2;
+        M((i+1),(3*N+9*(floor(i/12)+1)+2)) = -L/2;
+        M((i+2),(3*N+9*(floor(i/12)+1)+3)) = -L/2;
     end
 end
 
