@@ -9,7 +9,7 @@
 
 
 %% Function body
-function [M] = B1_matrix(N,offset,m,d,L,C)
+function [is,js,vals] = B1_matrix(N,offset,m,d,L,C)
 
 % compute number of entries
 Rmn = 1;
