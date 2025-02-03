@@ -12,10 +12,10 @@
 function [is,js,vals] = B1_matrix(N,offset,m,d,L,C)
 
 % compute number of entries
-Rmn = 1;
-Pmnv = 2; % variables + lagrange multipliers
-Pmnl = 3;
-Pmn = Pmnv+Pmnl;
+Rmn = 0; % 0 bc we currently are neglecting the global c.o.m.
+Pmnv = 2; % variables
+Pmnl = 3; % lagrange multipliers
+Pmn = Pmnv+Pmnl; % variables + lagrange multipliers
 Cm1nv = 2;
 Cm1nl = 6;
 Cm1n = Cm1nv + Cm1nl;
@@ -36,8 +36,6 @@ lo = 12*N; % lagrange multiplier offset (how many P and C variables)
 is = zeros(tot,1);
 js = zeros(tot,1);
 vals = zeros(tot,1);
-
-%% Filling rows corresponding to constraint m1x (center of mass constraint)
 
 % compute sum of mi*di
 tot_md = sum(m.*d);
@@ -340,6 +338,8 @@ for i = 1:N
     curr = curr+1;
     is(curr)=offset+3*N+9*i; js(curr)=lo+12*i;
     vals(curr) = -C(9*i-3);
+
+end
 
 clear m d;
 
